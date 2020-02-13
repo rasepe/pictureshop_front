@@ -2,13 +2,12 @@
 <html>
 <head>
 <title>Insert title here</title>
-<meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="js/pictureshop.js"></script>
 </head>
-<body>  <!--  onload="loadIds('shopId')" -->
+<body onload="loadIds('shopId')" >  <!--  onload="loadIds('shopId')" -->
 	<h2>Enter new picture</h2>
-	<form id="newPicture">
+<!-- 	<form id="newPicture"> -->
 	     <label for="shopId">Choose one Shop Id to add a picture</label> <br>
 		<select id="shopId">
 		</select> 
@@ -19,13 +18,13 @@
 		<input type="text" id="pictureName">
 		<label for="picturePrice">Enter price:</label>
 		<input type="text" id="picturePrice">
-		 <input class="btn btn-primary" id="submit-button" type="submit"
-			value="Save" onclick="getShopById()">
+		<input class="btn btn-primary" id="submit-button" type="submit" value="Save changes" onclick="addNewPicture()">
 
-	</form>
+<!-- 	</form> -->
+	<button onclick="seeAllShops()">See all shops</button>
 	<p>
 		<a href="http://localhost/pictureshop/">BACK TO INDEX</a>
 	</p>
-	<p id="pepe"></p>
+<p id="listShops"></p>
 </body>
 </html>
