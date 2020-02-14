@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="js/pictureshop.js"></script>
 </head>
-<body>
+<body onload="loadIds('shopId')" >  <!--  onload="loadIds('shopId')" -->
+	<h2>Delete pictures</h2>
+<!-- 	<form id="newPicture"> -->
+	     <label for="shopId">Choose one Shop Id to delete all Pictures</label> <br>
+		<select id="shopId">
+		</select> 
+		<br> 
+		<p id="confirmation"></p>
+		<input class="btn btn-primary" id="submit-button" type="submit" value="Delete pictures" onclick="deletePictures()">
 
+<!-- 	</form> -->
+<!--	<p id="pictureList"></p>  -->
+	<p>
+		<a href="http://localhost/pictureshop/">BACK TO INDEX</a>
+	</p>
+<!-- <p id="listShops"></p>-->
 </body>
 </html>
