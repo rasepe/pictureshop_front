@@ -185,14 +185,40 @@ function deletePictures() {
 			error: function(){
 				alert("json not found");
 			}
+		});	
+		
+	}
+	
+}
+
+function deletePictures2() {
+	
+	
+	var currentShopId = document.getElementById("shopId")[document.getElementById("shopId").selectedIndex].value;
+	var constructedUrl = "http://localhost:8080/shops/" + currentShopId + "/pictures";
+		
+		$.ajax({
+			type: "DELETE",
+			contentType: "application/json",
+			url: constructedUrl,
+			data: currentShopId, 
+			success: function(data) {
+			
+
+			},
+			error: function(){
+				alert("json not found");
+			}
 		});
 		
 		
-	}
+	
 	
 
 
 }
+
+
 
 function getCurrentShop() {
 	
