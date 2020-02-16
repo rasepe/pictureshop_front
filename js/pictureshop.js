@@ -151,7 +151,7 @@ function getIds(data) {
 	arrayShopIds.push(data.content[i].id);
 		
 	}
-	//return arrayShopIds;
+	//return arrayShopIds; xxx
 }
 
 
