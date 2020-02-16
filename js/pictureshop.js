@@ -1,31 +1,13 @@
 
 var arrayShops = new Array();
 var arrayShopIds = new Array();
-var counter = 0;
-
-function sleep(ms) {
-	  return new Promise(resolve => setTimeout(resolve, ms));
-	}
-
-	async function demo() {
-	  console.log('Taking a break...');
-	  await sleep(2000);
-	  console.log('Two seconds later, showing sleep in a loop...');
-
-	  // Sleep in loop
-	  for (let i = 0; i < 5; i++) {
-	    if (i === 3)
-	      await sleep(2000);
-	    console.log(i);
-	  }
-	}
 
 	
 
 function loadIds(shopId) {
 	var constructedUrl = "http://localhost:8080/shops/";
 
-	//var result;
+
 	$.ajax({
 		type: "GET",
 		url: constructedUrl,
@@ -78,7 +60,7 @@ function seeAllShops() {
 
 	var constructedUrl = "http://localhost:8080/shops/";
 
-	//var result;
+
 	$.ajax({
 		type: "GET",
 		url: constructedUrl,
@@ -103,7 +85,7 @@ function listPictures() {
 	var constructedUrl = "http://localhost:8080/shops/" + currentShopId + "/pictures";
 
 	console.log(constructedUrl);
-	//var result;
+
 	$.ajax({
 		type: "GET",
 		url: constructedUrl,
@@ -120,78 +102,9 @@ function listPictures() {
 
 }
 
-function listPictures2() {
-	
-	var currentShopId = document.getElementById("shopId")[document.getElementById("shopId").selectedIndex].value;
-
-	var constructedUrl = "http://localhost:8080/shops/" + currentShopId + "/pictures";
-
-	console.log(constructedUrl);
-	//var result;
-	$.ajax({
-		type: "GET",
-		url: constructedUrl,
-		success: function(data) {
-
-			getIds(data)
-
-		},
-		error: function(){
-			alert("json not found");
-		}
-	});
-
-
-}
-
-function getIds(data) {
-	
-	for (var i=0; i<data.content.length; i++) {
-	
-	arrayShopIds.push(data.content[i].id);
-		
-	}
-	//return arrayShopIds;
-}
 
 
 function deletePictures() {
-	
-	listPictures2();
-	if (counter == 0) {
-		document.getElementById("confirmation").innerHTML="Please click again to confirm deletion";
-		counter++;
-	} else {
-		document.getElementById("confirmation").innerHTML="Deletion confirmed";
-	}
-	//listPictures2();
-	console.log(arrayShopIds);
-	var currentShopId = document.getElementById("shopId")[document.getElementById("shopId").selectedIndex].value;
-	
-	for (var i=0; i<arrayShopIds.length; i++) {
-		var constructedUrl = "http://localhost:8080/shops/" + currentShopId + "/pictures/" + arrayShopIds[i];
-		// /shops/{shopId}/pictures/{pictureId}
-		console.log(constructedUrl);
-		$.ajax({
-			type: "DELETE",
-			contentType: "application/json",
-			url: constructedUrl,
-			data: arrayShopIds[i], 
-			success: function(data) {
-				console.log("success");
-				console.log("esborrem" + i);
-
-			},
-			error: function(){
-				alert("json not found");
-			}
-		});	
-		
-	}
-	
-}
-
-function deletePictures2() {
 	
 	
 	var currentShopId = document.getElementById("shopId")[document.getElementById("shopId").selectedIndex].value;
@@ -211,52 +124,10 @@ function deletePictures2() {
 			}
 		});
 		
-		
-	
-	
-
 
 }
 
 
-
-function getCurrentShop() {
-	
-	var currentShopId = document.getElementById("shopId")[document.getElementById("shopId").selectedIndex].value;
-
-	var constructedUrl = "http://localhost:8080/shops/";
-
-	//var result;
-	$.ajax({
-		type: "GET",
-		url: constructedUrl + currentShopId,
-		success: function(data) {
-
-			console.log("success");
-		},
-		error: function(){
-			alert("no ha funcionat");
-		}
-	});
-
-
-}
-
-
-
-
-
-
-/*
-function getCurrentShop(shop){
-	
-	currentShop = {
-		name: JSONParse(shop).name,
-		maxPictures: JSONParse(shop).maxPictures
-	}
-	
-	console.log(currentShop);
-}*/
 
 function manage(objects,shopId) {
 	var options;
@@ -268,13 +139,9 @@ function manage(objects,shopId) {
 }
 
 
-//editEmployee = JSON.stringify(editEmployee) + '{"id":'+editId+'}';  (al reves)
-
-//(@NotNull String author, String name, @NotNull double price, Shop shop)
 
 function addNewPicture() {
 
-	
 	
 	var newPictureAuthor = document.getElementById("pictureAuthor").value;
 	var newPictureName = document.getElementById("pictureName").value;
@@ -283,26 +150,7 @@ function addNewPicture() {
     var currentShop = arrayShops[currentShopId-1];
     
     cleanFields();
-   // getShopById(currentShopId);
-    //getCurrentShop();
-    //console.log(currentShop);
-    
-    
-//    if (newPictureAuthor == "") {
-//    	newPicture = {
-//    			author = null,
-//    			name = newPictureName,
-//    			price = newPicturePrice,
-//    			shop = currentShop
-//    	}
-//    } else {
-//    	newPicture = {
-//    			author = newPictureAuthor,
-//    			name = newPictureName,
-//    			price = newPicturePrice,
-//    			shop = currentShop
-//    	}
-//    }
+
     
    var newPicture = {
     		author: newPictureAuthor,
@@ -313,13 +161,6 @@ function addNewPicture() {
 
     var constructedURL = "http://localhost:8080/shops/" + currentShopId + "/pictures";
 	
-   console.log("hola");
-   var parameters = '{"shopId":'+currentShopId+',"picture":'+JSON.stringify(newPicture)+'}';
-   var parameters2 = '{"shopId":'+currentShopId+'}'+JSON.stringify(newPicture);
-   
-   var params = '{"shopId":' + currentShopId + ',"picture":' + JSON.stringify(newPicture) + '}';
-
-   console.log(params);
 
 	$.ajax({
 		type: "POST",

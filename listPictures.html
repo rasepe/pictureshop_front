@@ -2,23 +2,23 @@
 <html>
 <head>
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="js/pictureshop.js"></script>
 </head>
-<body onload="loadIds('shopId')" >  <!--  onload="loadIds('shopId')" -->
+<body onload="loadIds('shopId')">
 	<h2>List pictures</h2>
-<!-- 	<form id="newPicture"> -->
-	     <label for="shopId">Choose one Shop Id to get list of Pictures</label> <br>
-		<select id="shopId">
-		</select> 
-		<br> 
-		<input class="btn btn-primary" id="submit-button" type="submit" value="See pictures" onclick="listPictures()">
-
-<!-- 	</form> -->
+	<label for="shopId">Choose one Shop Id to get list of Pictures</label>
+	<br>
+	<select id="shopId">
+	</select>
+	<br>
+	<input class="btn btn-primary" id="submit-button" type="submit"
+		value="See pictures" onclick="listPictures()">
 	<p id="pictureList"></p>
 	<p>
 		<a href="http://localhost/pictureshop/">BACK TO INDEX</a>
 	</p>
-<p id="listShops"></p>
+	<p id="listShops"></p>
 </body>
 </html>
