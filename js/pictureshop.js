@@ -182,6 +182,7 @@ function addNewPicture() {
     			data: JSON.stringify(newPicture),  
     			success: function(data) {
     				console.log("success");
+    				location.reload();
     			},
     			error: function(){
     				alert("json not found");
