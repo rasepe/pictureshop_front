@@ -1,6 +1,5 @@
 
 var arrayShops = new Array();
-
 	
 
 function loadIds(shopId) {
@@ -215,4 +214,9 @@ function print(objects, id) {
 		result = "NO RESULTS";
 	}
 	document.getElementById(id).innerHTML = result;
+}
+
+
+function noShops() {
+	document.getElementById("listShops").innerHTML="NO SHOPS YET";
 }
