@@ -1,6 +1,5 @@
 
 var arrayShops = new Array();
-var arrayShopIds = new Array();
 
 	
 
@@ -39,7 +38,7 @@ function addNewShop() {
 
 
 	console.log(newShop);
-	demo();
+	cleanFieldsNewShop();
 
 	$.ajax({
 		type: "POST",
@@ -53,6 +52,12 @@ function addNewShop() {
 			alert("json not found");
 		}
 	});
+
+}
+
+function cleanFieldsNewShop() {
+	document.getElementById("name").value="";
+	document.getElementById("maxPictures").value="";
 
 }
 
@@ -147,37 +152,51 @@ function addNewPicture() {
 	var newPictureName = document.getElementById("pictureName").value;
 	var newPicturePrice = parseFloat(document.getElementById("picturePrice").value);
     var currentShopId = document.getElementById("shopId")[document.getElementById("shopId").selectedIndex].value;
-    var currentShop = arrayShops[currentShopId-1];
-    
-    cleanFields();
+    var currentShop;
+    for (var i=0; i<arrayShops.length; i++) {
+    	if (currentShopId==arrayShops[i].id) {
+    		currentShop = arrayShops[i];
+    	}
+    }
+
+    console.log(currentShop);
+    console.log(currentShop.maxPictures);
+    console.log(currentShop.numPictures);
+    cleanFieldsNewPicture();
 
     
-   var newPicture = {
-    		author: newPictureAuthor,
-			name: newPictureName,
-			price: newPicturePrice,
-			shop: currentShop
-	}
+    if (currentShop.numPictures < currentShop.maxPictures) {
+    	   var newPicture = {
+    	    		author: newPictureAuthor,
+    				name: newPictureName,
+    				price: newPicturePrice,
+    				shop: currentShop
+    		}
 
-    var constructedURL = "http://localhost:8080/shops/" + currentShopId + "/pictures";
-	
+    	    var constructedURL = "http://localhost:8080/shops/" + currentShopId + "/pictures";
+    		
 
-	$.ajax({
-		type: "POST",
-		contentType: "application/json",
-		url: constructedURL,
-		data: JSON.stringify(newPicture),  //params,  // '{"id":'+currentShopId+'}' + JSON.stringify(newPicture), 
-		success: function(data) {
-			console.log("success");
-		},
-		error: function(){
-			alert("json not found");
-		}
-	});
+    		$.ajax({
+    			type: "POST",
+    			contentType: "application/json",
+    			url: constructedURL,
+    			data: JSON.stringify(newPicture),  
+    			success: function(data) {
+    				console.log("success");
+    			},
+    			error: function(){
+    				alert("json not found");
+    			}
+    		});
+    } else {
+    	document.getElementById("pictureLimit").innerHTML = "Maximum number of pictures for this shop is: " + currentShop.maxPictures;
+    }
+    
+
 
 }
 
-function cleanFields(){
+function cleanFieldsNewPicture(){
 	document.getElementById("pictureAuthor").value="";
 	document.getElementById("pictureName").value="";
 	document.getElementById("picturePrice").value="";

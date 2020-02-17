@@ -5,7 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="js/pictureshop.js"></script>
 </head>
-<body onload="loadIds('shopId')" >  <!--  onload="loadIds('shopId')" -->
+<body onload="loadIds('shopId')" >  
 	<h2>Enter new picture</h2>
 
 	     <label for="shopId">Choose one Shop Id to add a picture</label> <br>
@@ -21,6 +21,7 @@
 		<input class="btn btn-primary" id="submit-button" type="submit" value="Save changes" onclick="addNewPicture()">
 
 	<button onclick="seeAllShops()">See all shops</button>
+	<p id="pictureLimit"></p>
 	<p>
 		<a href="http://localhost/pictureshop/">BACK TO INDEX</a>
 	</p>
